@@ -121,7 +121,7 @@ namespace synchProject
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             string pathval = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\isms\AccessMethod.txt";
-            //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\pardeep.singh\Desktop\testShare\AccessMethod.txt");
+            
             string[] lines = System.IO.File.ReadAllLines(pathval);
             string information,Password;
            
@@ -170,16 +170,7 @@ namespace synchProject
 
             Console.WriteLine("File synchronization InProgress...");
             Process p = new Process();
-
-           //p.StartInfo.Arguments = string.Format("/ C NET USE \\192.168.0.9\\IPC$ / user:pardeep.singh EvTz_! *@~1");
-            //p.StartInfo.Arguments = string.Format("/C Robocopy /S /e {0} {1}", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\testShare", "\\192.168.0.9\\dcg_one\\" + System.Security.Principal.WindowsIdentity.GetCurrent().Name);
-            //p.StartInfo.Arguments = string.Format("/ C NET USE \\192.168.0.9\\IPC$ / user:pardeep.singh EvTz_! *@~1");
-            //p.StartInfo.Arguments = string.Format("/C Robocopy /S /e {0} {1}", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\testShare", "\\\\192.168.0.9\\dcg_one\\pardeep.singh");
-            //p.StartInfo.FileName = "CMD.EXE";
-            //p.StartInfo.CreateNoWindow = true;
-            //p.StartInfo.UseShellExecute = false;
-            //p.Start();
-            //p.WaitForExit();
+                       
             string[] values = credentials.Split(';');
            
                 values[0] = values[0].Trim();
@@ -201,7 +192,7 @@ namespace synchProject
                 if (sw.BaseStream.CanWrite)
                 {
                     sw.WriteLine("NET USE \\\\192.168.0.9\\IPC$ /user:"+ values[0]+" "+values[1]);
-                    //sw.WriteLine("NET USE \\\\192.168.0.9\\IPC$ /user:pardeep.singh EvTz_!*@~1");
+                   
                     sw.WriteLine("robocopy /s /e %USERPROFILE%\\Desktop\\isms \\\\192.168.0.9\\dcg_one\\%username%");
                     
                 }
